@@ -1,11 +1,29 @@
 ---
 
 ---
-<nav class="flex max-w-6xl m-auto justify-between py-10">
-	<a href="/">NicoBlog</a>
-	<ul class="flex justify-center items-center gap-6">
-		<li><a href="#articulos">Artículos</a></li>
-		<li><a href="/about">Acerca de</a></li>
-		<li><a href="https://portafolio-nico-alvarado.netlify.app/es/">Contacto</a></li>
-	</ul>
-</nav>
+<nav class="nav-gradient bg-slate-950 sticky top-0 z-50">
+    <div class="pt-7 pb-6 flex justify-between items-center max-w-6xl m-auto px-4">
+      <a class="text-yellow-50 font-bold text-3xl" href="/">NicoBlog</a>
+      <ul class="nav__menu flex items-center gap-8">
+        <li>
+          <a href="/articulos" class="font-semibold text-gray-400 text-l transition duration-200 hover:text-white" aria-label="Articulos">Articulos</a>
+        </li>
+        <li>
+          <a href="/about" class="font-semibold text-gray-400 text-l duration-200 hover:text-white" aria-label="Acerca de">Acerca de</a>
+        </li>
+        <li>
+          <a href="" class="font-semibold text-gray-400 text-l duration-200 hover:text-white" aria-label="Contacto">Contacto</a>
+        </li>
+      </ul>
+  
+    
+    </div>
+  </nav>
+
+
+<style>
+	 .nav-gradient {
+		background: linear-gradient(to bottom, #141719, #0e1012, #0a0b0c);
+    }
+	
+</style>
