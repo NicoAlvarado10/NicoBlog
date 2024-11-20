@@ -15,7 +15,9 @@
           <a href="" class="font-semibold text-gray-400 text-lg duration-200 hover:text-white" aria-label="Contacto">Contacto</a>
         </li>
       </ul>
-  
+      <div class="menu-toggle text-white">
+        <i class="ri-menu-fill"></i>
+      </div>
     
     </div>
   </nav>
@@ -25,5 +27,71 @@
 	 .nav-gradient {
 		background: linear-gradient(to bottom, #141719, #0e1012, #0a0b0c);
     }
-	
+    .menu-toggle {
+      display: none;
+    }
+  
+    nav {
+      position: fixed;
+      width: 100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      z-index: 100;
+    }
+  
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+  
+      .nav__menu {
+        display: none; /* Oculto por defecto */
+        flex-direction: column;
+        position: absolute;
+        top: 80%; /* Posiciona el menú justo debajo de la barra */
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(to top, #141719, #0e1012, #0a0b0c);
+        border-bottom: 1px solid #9ca3af;
+        z-index: 100;
+        transition: transform 0.3s ease-in-out;
+      }
+  
+      .nav__menu.active {
+        display: flex;
+        transform: translateY(0);
+      }
+    }
+  
 </style>
+
+<script >
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav__menu');
+
+  // Verificar si los elementos existen antes de agregar los event listeners
+  if (menuToggle && navMenu) {
+    const menuIcon = menuToggle.querySelector('i');
+
+    // Verificar que menuIcon no sea null
+    if (menuIcon) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const isOpen = navMenu.classList.contains('active');
+        menuIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-fill');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof Node) || (!navMenu.contains(target) && !menuToggle.contains(target))) {
+          navMenu.classList.remove('active');
+          menuIcon.setAttribute('class', 'ri-menu-fill');
+        }
+      });
+    }
+  }
+</script>
